@@ -1,0 +1,64 @@
+!!! 5
+
+%html{:xmlns=>"http://www.w3.org/1999/xhtml"}
+  %head
+    %title #{@title}
+    %meta{ :content=>"text/javascript", "http-equiv"=>"Content-Script-Type" }
+    %meta{ :content=>"text/css", "http-equiv"=>"Content-Style-Type" }
+    %meta{ :content=>"text/html; charset=utf-8", "http-equiv"=>"Content-Type" }
+    %meta{ :content=>"0", "http-equiv"=>"expires" }
+    %meta{ :content=>"Description for search engines", :name=>"description" }
+    %meta{ :content=>"Ramaze #{Ramaze::VERSION}", :name=>"generator" }
+    %meta{ :content=>"Ramaze, Your own keywords", :name=>"keywords" }
+    %meta{ :content=>"#{Time.now.iso8601}", :name=>"date" }
+    
+    %script{ :type=>"text/javascript", :src=>"js/html5.js" }
+    
+    %link{ :rel=>:stylesheet, :type=>"text/css", :href=>"/css/main" }
+
+  %body
+    %header.Header#Header
+      %a{ :href=>"/" }
+        %img.Logo{ :src=>"/img/logo.gif", :alt=>"Ovative Group: Realizing Innovation" }
+    
+    %nav.MainNav#MainNav
+      .wrapper
+        %ul
+          - main_nav.each do |link|
+            %li{ :class=>(link.selected ? "selected" : nil) }> <a href="#{link.href}">#{link.name}</a>
+    
+    %section.Content#Content
+      .wrapper
+        %h1 #{@h1 || @title}
+        #{@content}
+      
+    %section.Info#Info
+      .wrapper
+        %section.info_block#BlogEntries
+          .padding.first
+            %h2 Recent Posts
+            %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+            %p Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+        %section.info_block#Tweets
+          .padding
+            %h2 Latest Tweets
+            %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+            %p Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+        %section.info_block#Contact
+          .padding.last
+            %h2 Contact Us
+            %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+            %p
+              %a{ :href=>"mailto:email@ovative.com" }email@ovative.com
+            %p 800.555.1234
+            
+    %footer.Footer#Footer
+      .wrapper
+        %nav.FooterNav#FooterNav
+          %ul
+            - main_nav.each do |link|
+              %li{ :class=>css_position(main_nav, link) }> <a href="#{link.href}">#{link.name}</a>
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+  
+    .debug
+      =h request.inspect

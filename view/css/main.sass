@@ -1,0 +1,163 @@
+//-------------------------------------------------------------------------
+// Dimensions
+//-------------------------------------------------------------------------
+$SITE_WIDTH: 960px
+
+//-------------------------------------------------------------------------
+// Colors & fonts
+//-------------------------------------------------------------------------
+$FONT: Helvetica, Arial, sans-serif
+$FONT_HEADINGS: "Arial Narrow", $FONT
+
+$COLOR_ORANGE: #F25623
+
+//-------------------------------------------------------------------------
+// Mixins
+//-------------------------------------------------------------------------
+=clearfix
+  :overflow hidden
+  :display inline-block
+  &
+    :display block
+
+/*-------------------------------------------------------------------------
+/* General
+/*-------------------------------------------------------------------------
+*
+  :-moz-box-sizing border-box
+
+BODY
+  :background #DEEFF6
+  :margin 0
+
+IMG
+  :border none
+
+HEADER, SECTION, FOOTER
+  :display block
+
+NAV
+  UL
+    :list-style none
+    :margin 0
+    :padding 0
+    LI
+      :display inline-block
+      :*display inline
+
+/*-------------------------------------------------------------------------
+/* Typography
+/*-------------------------------------------------------------------------
+BODY
+  :font 75%/1.2em $FONT
+
+A
+  :text-decoration none
+  :color $COLOR_ORANGE
+  .Footer &, .Info &
+    :color #FFF
+    &:HOVER
+      :color $COLOR_ORANGE
+
+H1, H2, H3
+  :text-transform uppercase
+  :font-family $FONT_HEADINGS
+
+H1
+  :font bold 3em/1em $FONT_HEADINGS
+  :color #999999
+  EM
+    :color $COLOR_ORANGE
+H2
+  :font-size 1.4em
+  :color $COLOR_ORANGE
+H3
+  :font-size 1.2em
+
+P, UL, OL, DL
+  :margin 1.4em 0
+
+EM
+  :font-style normal
+
+/*-------------------------------------------------------------------------
+/* Structure
+/*-------------------------------------------------------------------------
+.Header
+  :height 125px
+  :background #000 url(/img/header_bg.gif) repeat-x
+  .Logo
+    :margin 30px 0 0 40px
+
+.MainNav
+  +clearfix
+  :font-family $FONT_HEADINGS
+  :text-align right
+  UL
+    LI
+      :vertical-align top
+      :background #666
+      A
+        :display inline-block
+        :padding 10px 20px
+        :font-size 1.2em
+        :font-weight bold
+        :color #FFF
+        :text-transform uppercase
+      &:HOVER
+        :background $COLOR_ORANGE
+      &.selected A
+        :background $COLOR_ORANGE
+        :padding-bottom 20px
+.Content
+  :padding 1em 0 2em
+
+.Footer
+  :padding 2em 0
+  :border-top 1px solid #D2D7D9
+  :background #9AA5A9
+  :text-align right
+
+.FooterNav
+  :line-height 1em
+  LI
+    :border-left 2px solid #FFF
+    &.first
+      :border-left none
+    &.last A
+      :padding-right 0
+  A
+    :display inline-block
+    :padding 0 1em
+    :font-weight bold
+    :text-transform uppercase
+  
+  
+.wrapper
+  :width $SITE_WIDTH
+  :margin 0px auto
+
+/*-------------------------------------------------------------------------
+/* Components
+/*-------------------------------------------------------------------------
+.Info
+  +clearfix
+  :background #9AA5A9
+  .info_block
+    :float left
+    :width $SITE_WIDTH/3 - 2px
+    .padding
+      :padding 2em 1em
+    .first
+      :padding-left 0
+    .last
+      :padding-right 0
+    H2
+      :margin 0
+      :color #FFF
+
+/*-------------------------------------------------------------------------
+/* Debug
+/*-------------------------------------------------------------------------
+.debug
+  :display none
