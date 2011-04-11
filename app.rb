@@ -6,6 +6,7 @@
 require 'rubygems'
 require 'ramaze'
 require 'faker'
+require 'ostruct'
 
 # Make sure that Ramaze knows where you are
 Ramaze.options.roots = [__DIR__]

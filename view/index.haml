@@ -2,10 +2,17 @@
 - @h1 = "Bringing Companies to Competive Advantage for their <em>Digital Future</em>"
 
 %h2 Enterprise Clients
-%p= Faker::Lorem.paragraph(20)
+%ul.slideshow.jcarousel-skin-tango
+  - @enterprise_clients.each_with_index do |client,i|
+    %li
+      %a{ :href=>"/client/#{i}", :rel=>:popin }
+        %img{ :src=>client.logo }
 
 %h2 Emerging Innovation Clients
-%p= Faker::Lorem.paragraph(20)
+%ul.slideshow.jcarousel-skin-tango
+  - @emerging_clients.each do |client|
+    %li
+      %img{ :src=>client.logo }
 
 %h2 Our Team
 %p= Faker::Lorem.paragraph(20)
