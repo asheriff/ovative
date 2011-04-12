@@ -27,9 +27,10 @@
     %ul.slides.jcarousel-skin-photos
       %script
         :plain
+          // BUG: throwing 'invalid label' error in FF3
           { jcarousel_options: {
-              visible:5,
-              scroll:5,
+              visible: 5,
+              scroll: 5,
               itemLastInCallback: function(carousel, li){
                 // BUG: hides wrong border if visible%total!=0
                 $(li).css({borderRightWidth: "0px"});

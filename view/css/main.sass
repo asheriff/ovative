@@ -2,6 +2,7 @@
 // Dimensions
 //-------------------------------------------------------------------------
 $SITE_WIDTH: 960px
+$PAGE_HOME_WIDTH_DELTA: 100px
 
 //-------------------------------------------------------------------------
 // Colors & fonts
@@ -154,6 +155,8 @@ HR
 .wrapper
   :width $SITE_WIDTH
   :margin 0px auto
+  .page_home .Content &
+    :width $SITE_WIDTH - $PAGE_HOME_WIDTH_DELTA
 
 /*-------------------------------------------------------------------------
 /* Components
@@ -180,6 +183,10 @@ HR
 /* Slideshow
 /*-------------------------------------------------------------------------
 .slideshow
+  :width $SITE_WIDTH
+  .page_home .Content &
+    :margin-left -$PAGE_HOME_WIDTH_DELTA/2
+  
   UL.slides
     :margin 0
     :padding 0
