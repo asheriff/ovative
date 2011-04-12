@@ -3,44 +3,47 @@
 
 %p= Faker::Lorem.paragraph(15)
 
-%h2 Enterprise Clients
-.slideshow
-  %ul.slides.jcarousel-skin-default
-    - @enterprise_clients.each_with_index do |client,i|
-      %li
-        .slide
-          %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+%section#EnterpriseClients
+  %h2 Enterprise Clients
+  .slideshow
+    %ul.slides.jcarousel-skin-default
+      - @enterprise_clients.each_with_index do |client,i|
+        %li
+          .slide
+            %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
-%h2 Emerging Innovation Clients
-.slideshow
-  %ul.slides.jcarousel-skin-default
-    - @emerging_clients.each_with_index do |client,i|
-      %li
-        .slide
-          %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+%section#EmergingClients
+  %h2 Emerging Innovation Clients
+  .slideshow
+    %ul.slides.jcarousel-skin-default
+      - @emerging_clients.each_with_index do |client,i|
+        %li
+          .slide
+            %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
-%h2 Our Team
-.slideshow
-  %ul.slides.jcarousel-skin-photos
-    %script
-      :plain
-        { jcarousel_options: {
-            visible:5,
-            scroll:5,
-            itemLastInCallback: function(carousel, li){
-              // BUG: hides wrong border if visible%total!=0
-              $(li).css({borderRightWidth: "0px"});
-            },
-            itemVisibleOutCallback: function(carousel, li){
-              $(li).css({borderRightWidth: "1px"});
-            }
-        }}
-    - @associates.each_with_index do |user,i|
-      %li
-        .slide
-          %a{ :href=>"/associates/#{i}", :rel=>:popin }
-            %img{ :src=>user.image }
-          .name
-            %a{ :href=>"/associates/#{i}", :rel=>:popin } #{user.name}
-          .title
-            #{user.title}
+%section#Associates
+  %h2 Our Team
+  .slideshow
+    %ul.slides.jcarousel-skin-photos
+      %script
+        :plain
+          { jcarousel_options: {
+              visible:5,
+              scroll:5,
+              itemLastInCallback: function(carousel, li){
+                // BUG: hides wrong border if visible%total!=0
+                $(li).css({borderRightWidth: "0px"});
+              },
+              itemVisibleOutCallback: function(carousel, li){
+                $(li).css({borderRightWidth: "1px"});
+              }
+          }}
+      - @associates.each_with_index do |user,i|
+        %li
+          .slide
+            %a{ :href=>"/associates/#{i}", :rel=>:popin }
+              %img{ :src=>user.image }
+            .name
+              %a{ :href=>"/associates/#{i}", :rel=>:popin } #{user.name}
+            .title
+              #{user.title}
