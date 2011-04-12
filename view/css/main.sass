@@ -71,9 +71,9 @@ A
     &:HOVER
       :color $COLOR_ORANGE
 
-H1, H2, H3
-  :text-transform uppercase
+H1, H2
   :font-family $FONT_HEADINGS
+  :text-transform uppercase
 
 H1
   :font bold 3em/1em $FONT_HEADINGS
@@ -159,6 +159,15 @@ HR
     :width $SITE_WIDTH - $PAGE_HOME_WIDTH_DELTA
 
 /*-------------------------------------------------------------------------
+/* Icons
+/*-------------------------------------------------------------------------
+.icon
+  :padding-left 18px
+  :background no-repeat left center
+.icon_link
+  :background-image url(/img/icons/general/bullet.gif)
+
+/*-------------------------------------------------------------------------
 /* Components
 /*-------------------------------------------------------------------------
 .Info
@@ -211,7 +220,7 @@ HR
     :margin 0 10px
   .jcarousel-prev-horizontal, .jcarousel-next-horizontal
     :position absolute
-    :top 64px
+    :top 40%
     :width 32px
     :height 32px
     :cursor pointer
@@ -257,6 +266,36 @@ HR
   .jcarousel-item
     :border-right 1px solid #BECBD1
     :text-align left
+
+.jcarousel-skin-services
+  .jcarousel-clip
+    +border-radius( 15px )
+    :background #FFF
+  .jcarousel-item
+    :border-right 1px solid #BECBD1
+    :text-align left
+  .slide
+    :padding 10px 10px 10px 0
+
+
+/*-------------------------------------------------------------------------
+/* Components Instances
+/*-------------------------------------------------------------------------
+#Services
+  :margin 4em 0
+  H2
+    :display none
+  H3
+    +clearfix
+    :padding-top 5px
+    :font-size 1.1em
+    :color $COLOR_ORANGE
+    IMG
+      :vertical-align top
+      :margin -5px 10px 0 0
+      :float left
+  P
+    :margin 1em 0
 
 /*-------------------------------------------------------------------------
 /* Debug

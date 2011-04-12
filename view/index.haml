@@ -1,7 +1,35 @@
 - @title = "Who We Are"
 - @h1 = "Bringing Companies to Competive Advantage for their <em>Digital Future</em>"
 
-%p= Faker::Lorem.paragraph(15)
+%section#Services
+  %h2 Services
+  .slideshow
+    %ul.slides.jcarousel-skin-services
+      %script
+        :plain
+          // BUG: throwing 'invalid label' error in FF3
+          { jcarousel_options: {
+              visible: 4,
+              scroll: 4,
+              itemLastInCallback: function(carousel, li){
+                // BUG: hides wrong border if visible%total!=0
+                $(li).css({borderRightWidth: "0px"});
+              },
+              itemVisibleOutCallback: function(carousel, li){
+                $(li).css({borderRightWidth: "1px"});
+              }
+          }}
+      - @services.each_with_index do |service,i|
+        %li
+          .slide
+            %h3<
+              %a{ :href=>"#service_#{i}" }
+                %img{ :src=>service.image }>
+                #{service.name}
+            .abstract
+              %p #{service.abstract}
+            .controls
+              %a.icon.icon_link{ :href=>"#service_#{i}" } Learn More
 
 %section#EnterpriseClients
   %h2 Enterprise Clients
