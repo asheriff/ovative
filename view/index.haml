@@ -22,7 +22,7 @@
 %h2 Our Team
 .slideshow
   %ul.slides.jcarousel-skin-photos
-    %script {options: { visible:5, scroll:5 } }
+    %script {jcarousel_options: { visible:5, scroll:5 } }
     - @associates.each_with_index do |user,i|
       %li
         .slide
