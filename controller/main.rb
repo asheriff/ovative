@@ -32,12 +32,12 @@ class MainController < Controller
     @associates.shuffle!
   end
   
-  def clients(id)
-    @title = "Client #{id}"
+  def client(id)
+    @title = Faker::Company.name
     %(
-      %h2= Faker::Lorem.sentence
+      %h2= Faker::Company.bs
       - 4.times do
-        %p= Faker::Lorem.paragraph(30)
+        %p= Faker::Lorem.paragraph(20)
     ).unindent
   end
   

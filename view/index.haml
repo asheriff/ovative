@@ -10,7 +10,7 @@
       - @enterprise_clients.each_with_index do |client,i|
         %li
           .slide
-            %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+            %a{ :href=>"/client/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
 %section#EmergingClients
   %h2 Emerging Innovation Clients
@@ -19,7 +19,7 @@
       - @emerging_clients.each_with_index do |client,i|
         %li
           .slide
-            %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+            %a{ :href=>"/client/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
 %section#Associates
   %h2 Our Team
