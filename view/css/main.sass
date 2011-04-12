@@ -20,6 +20,15 @@ $COLOR_ORANGE: #F25623
   &
     :display block
 
+// TODO: use compass lib for css3 features
+=border-radius($radius)
+  :-webkit-border-radius $radius
+  :-moz-border-radius $radius
+  :-o-border-radius $radius
+  :-ms-border-radius $radius
+  :-khtml-border-radius $radius
+  :border-radius $radius
+
 /*-------------------------------------------------------------------------
 /* General
 /*-------------------------------------------------------------------------
@@ -218,12 +227,12 @@ HR
 
 .jcarousel-skin-default
   .jcarousel-clip
-    :-moz-border-radius 15px
+    +border-radius( 15px )
     :background #2DA5CA
     :padding 40px 20px 40px 0
   .slide
     :display block
-    :-moz-border-radius 5px
+    +border-radius( 5px )
     :padding 5px
     :background #FFF
     :height 77px
