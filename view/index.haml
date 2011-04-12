@@ -22,7 +22,19 @@
 %h2 Our Team
 .slideshow
   %ul.slides.jcarousel-skin-photos
-    %script {jcarousel_options: { visible:5, scroll:5 } }
+    %script
+      :plain
+        { jcarousel_options: {
+            visible:5,
+            scroll:5,
+            itemLastInCallback: function(carousel, li){
+              // BUG: hides wrong border if visible%total!=0
+              $(li).css({borderRightWidth: "0px"});
+            },
+            itemVisibleOutCallback: function(carousel, li){
+              $(li).css({borderRightWidth: "1px"});
+            }
+        }}
     - @associates.each_with_index do |user,i|
       %li
         .slide
