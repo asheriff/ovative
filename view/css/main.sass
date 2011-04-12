@@ -187,51 +187,29 @@ HR
   .jcarousel-item
     :text-align center
     :margin 0 10px
-  .jcarousel-item-horizontal
-  .jcarousel-item-placeholder
-    :background #fff
-    :color #000
-  .jcarousel-next-horizontal
+  .jcarousel-prev-horizontal, .jcarousel-next-horizontal
     :position absolute
-    :top 50px
+    :top 64px
+    :width 32px
+    :height 32px
+    :cursor pointer
+  .jcarousel-next-horizontal
     :right 5px
-    :width 32px
-    :height 32px
-    :cursor pointer
-    :background transparent url(/js/plugins/jcarousel/skins/tango/next-horizontal.png) no-repeat 0 0
-  .jcarousel-next-horizontal
-    &:hover
-      :background-position -32px 0
-    &:active
-      :background-position -64px 0
-  .jcarousel-next-disabled-horizontal
-    :cursor default
-    :background-position -96px 0
-    &:hover, &:active
-      :cursor default
-      :background-position -96px 0
+    :background transparent url(/img/components/slideshow/icon_next.gif) no-repeat 0 0
   .jcarousel-prev-horizontal
-    :position absolute
-    :top 43px
     :left 5px
-    :width 32px
-    :height 32px
-    :cursor pointer
-    :background transparent url(/js/plugins/jcarousel/skins/tango/prev-horizontal.png) no-repeat 0 0
-  .jcarousel-prev-horizontal
+    :background transparent url(/img/components/slideshow/icon_prev.gif) no-repeat 0 0
+  .jcarousel-next-horizontal, .jcarousel-prev-horizontal
     &:hover
       :background-position -32px 0
     &:active
       :background-position -64px 0
-  .jcarousel-prev-disabled-horizontal
+  .jcarousel-next-disabled-horizontal, .jcarousel-prev-disabled-horizontal
     :cursor default
     :background-position -96px 0
     &:hover, &:active
       :cursor default
       :background-position -96px 0
-    &:hover, &:active
-      :cursor default
-      :background-position 0 -96px
 
 .jcarousel-skin-default
   .jcarousel-clip

@@ -6,9 +6,7 @@
   // Slideshows
   $(document).ready( function(){
     $(".slides").each(function(){
-      $(this).jcarousel(
-        $(this).metadata().options
-      );
-    })
+      $(this).jcarousel( $(this).metadata().options );
+    });
   });
 })(jQuery);
