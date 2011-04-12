@@ -28,4 +28,7 @@
         .slide
           %a{ :href=>"/associates/#{i}", :rel=>:popin }
             %img{ :src=>user.image }
-          %strong #{user.name}
+          .name
+            %a{ :href=>"/associates/#{i}", :rel=>:popin } #{user.name}
+          .title
+            #{user.title}

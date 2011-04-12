@@ -11,14 +11,25 @@ class MainController < Controller
     @enterprise_clients = [@enterprise_clients, @enterprise_clients].flatten
     @emerging_clients = @enterprise_clients.reverse
     
-    @associates = Dir["public/img/team_memebers/*"].to_a.collect do |user|
-      OpenStruct.new({
-        :image => user.sub("public",""),
-        :name => Faker::Name.name,
-      })
-    end
+    titles = [
+      "Director of Juggling",
+      "President and CEO",
+      "CFO",
+      "Senior Vice President, Gnome Wrangling",
+      "Associate Gnome Wranger",
+    ]
     
-    @associates = [@associates, @associates, @associates].flatten
+    @associates = []
+    Dir["public/img/team_memebers/*"].to_a.each_with_index do |user,i|
+      3.times do
+        @associates << OpenStruct.new({
+          :image => user.sub("public",""),
+          :name => i!=3 ? Faker::Name.name : "Henry John Temple Viscount Palmerston",
+          :title => titles[rand(titles.length-1)]
+        })
+      end
+    end
+    @associates.shuffle!
   end
   
   def clients(id)
