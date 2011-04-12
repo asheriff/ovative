@@ -22,14 +22,20 @@
       - @services.each_with_index do |service,i|
         %li
           .slide
-            %h3<
-              %a{ :href=>"#service_#{i}" }
-                %img{ :src=>service.image }>
+            %h3< 
+              %a.jcarousel-content-toggle{ :href=>"#service_#{i}" }<>
+                %img{ :src=>service.image }<>
                 #{service.name}
             .abstract
               %p #{service.abstract}
             .controls
-              %a.icon.icon_link{ :href=>"#service_#{i}" } Learn More
+              %a.jcarousel-content-show.icon.icon_more{ :href=>"#service_#{i}" } Learn More
+              %a.jcarousel-content-hide.icon.icon_less.hidden{ :href=>"" } Close
+            .jcarousel-content-block{ :id=>"service_#{i}" }
+              %h4 #{i} #{Faker::Lorem.sentence}
+              - (rand(3)+1).times do
+                %p #{Faker::Lorem.paragraph(20)}
+              
 
 %section#EnterpriseClients
   %h2 Enterprise Clients

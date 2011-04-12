@@ -98,6 +98,9 @@ HR
   :border none
   :border-bottom 1px solid #666
 
+.hidden
+  :display none
+
 /*-------------------------------------------------------------------------
 /* Structure
 /*-------------------------------------------------------------------------
@@ -164,8 +167,10 @@ HR
 .icon
   :padding-left 18px
   :background no-repeat left center
-.icon_link
+.icon_more
   :background-image url(/img/icons/general/bullet.gif)
+.icon_less
+  :background-image url(/img/icons/general/bullet_disabled.gif)
 
 /*-------------------------------------------------------------------------
 /* Components
@@ -220,7 +225,7 @@ HR
     :margin 0 10px
   .jcarousel-prev-horizontal, .jcarousel-next-horizontal
     :position absolute
-    :top 40%
+    :top 64px
     :width 32px
     :height 32px
     :cursor pointer
@@ -296,6 +301,13 @@ HR
       :float left
   P
     :margin 1em 0
+  .icon_less
+    :color #666
+  .jcarousel-content-blocks
+    :Xdisplay none
+    :padding 3em
+  .jcarousel-content-block
+    :Xdisplay none
 
 /*-------------------------------------------------------------------------
 /* Debug
