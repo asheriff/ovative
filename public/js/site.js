@@ -1,8 +1,14 @@
 // Initialization
+//
 (function($){
+  $.metadata.setType("elem", "script");
+  
+  // Slideshows
   $(document).ready( function(){
-    $(".slideshow").jcarousel({
-      visible: 4
-    });
+    $(".slides").each(function(){
+      $(this).jcarousel(
+        $(this).metadata().options
+      );
+    })
   });
 })(jQuery);

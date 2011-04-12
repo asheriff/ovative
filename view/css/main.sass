@@ -162,46 +162,28 @@ HR
     H2
       :margin 0
       :color #FFF
+
 /*-------------------------------------------------------------------------
 /* Slideshow
 /*-------------------------------------------------------------------------
-UL.slideshow
-  :margin 0
-  :padding 0
-  LI
-    :list-style none
-    :display inline-block
-    .slide
-      :display block
-      :-moz-border-radius 5px
-      :padding 5px
-      :background #FFF
-      :height 77px
-      :vertical-align middle
-      A
-        :display block
-        :height 77px
-        :width 190px
-        :background no-repeat center center
-
-.jcarousel-skin-default
+.slideshow
+  UL.slides
+    :margin 0
+    :padding 0
+    LI
+      :list-style none
+      :display inline-block
   *
     :box-sizing content-box
     :-moz-box-sizing content-box
   .jcarousel-container
-  .jcarousel-container-horizontal
     :padding 0px 40px
-  .jcarousel-clip-horizontal
-    :-moz-border-radius 15px
-    :background #2DA5CA
-    :padding 40px 20px 40px 0
+  .jcarousel-clip
     :height auto
   .jcarousel-list
   .jcarousel-item
     :text-align center
-    :Xpadding 5px
     :margin 0 10px
-    :Xborder 1px solid lime
   .jcarousel-item-horizontal
   .jcarousel-item-placeholder
     :background #fff
@@ -247,6 +229,27 @@ UL.slideshow
     &:hover, &:active
       :cursor default
       :background-position 0 -96px
+
+.jcarousel-skin-default
+  .jcarousel-clip
+    :-moz-border-radius 15px
+    :background #2DA5CA
+    :padding 40px 20px 40px 0
+  .slide
+    :display block
+    :-moz-border-radius 5px
+    :padding 5px
+    :background #FFF
+    :height 77px
+    :vertical-align middle
+    A
+      :display block
+      :height 77px
+      :width 190px
+      :background no-repeat center center
+
+.jcarousel-skin-photos
+  
 
 /*-------------------------------------------------------------------------
 /* Debug

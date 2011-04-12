@@ -4,18 +4,28 @@
 %p= Faker::Lorem.paragraph(15)
 
 %h2 Enterprise Clients
-%ul.slideshow.jcarousel-skin-default
-  - @enterprise_clients.each_with_index do |client,i|
-    %li
-      .slide
-        %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+.slideshow
+  %ul.slides.jcarousel-skin-default
+    - @enterprise_clients.each_with_index do |client,i|
+      %li
+        .slide
+          %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
 %h2 Emerging Innovation Clients
-%ul.slideshow.jcarousel-skin-default
-  - @emerging_clients.each_with_index do |client,i|
-    %li
-      .slide
-        %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+.slideshow
+  %ul.slides.jcarousel-skin-default
+    - @emerging_clients.each_with_index do |client,i|
+      %li
+        .slide
+          %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
 %h2 Our Team
-%p= Faker::Lorem.paragraph(20)
+.slideshow
+  %ul.slides.jcarousel-skin-photos
+    %script {options: { visible:5, scroll:5 } }
+    - @associates.each_with_index do |user,i|
+      %li
+        .slide
+          %a{ :href=>"/associates/#{i}", :rel=>:popin }
+            %img{ :src=>user.image }
+          %strong #{user.name}
