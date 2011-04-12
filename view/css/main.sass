@@ -24,6 +24,7 @@ $COLOR_ORANGE: #F25623
 /* General
 /*-------------------------------------------------------------------------
 *
+  :box-sizing border-box
   :-moz-box-sizing border-box
 
 BODY
@@ -71,6 +72,7 @@ H1
 H2
   :font-size 1.4em
   :color $COLOR_ORANGE
+  :margin 2em 0 1em
 H3
   :font-size 1.2em
 
@@ -80,6 +82,11 @@ P, UL, OL, DL
 EM
   :font-style normal
 
+HR
+  :height 1px
+  :border none
+  :border-bottom 1px solid #666
+
 /*-------------------------------------------------------------------------
 /* Structure
 /*-------------------------------------------------------------------------
@@ -87,7 +94,7 @@ EM
   :height 125px
   :background #000 url(/img/header_bg.gif) repeat-x
   .Logo
-    :margin 30px 0 0 40px
+    :margin 30px 0 0
 
 .MainNav
   +clearfix
@@ -159,17 +166,110 @@ EM
 /* Slideshow
 /*-------------------------------------------------------------------------
 UL.slideshow
+  :margin 0
+  :padding 0
   LI
     :list-style none
     :display inline-block
-.jcarousel-skin-tango
+    .slide
+      :display block
+      :-moz-border-radius 5px
+      :padding 5px
+      :background #FFF
+      :height 77px
+      :vertical-align middle
+      A
+        :display block
+        :height 77px
+        :width 190px
+        :background no-repeat center center
+
+.jcarousel-skin-default
+  *
+    :box-sizing content-box
+    :-moz-box-sizing content-box
+  .jcarousel-container
   .jcarousel-container-horizontal
-    :width 100%
-    .jcarousel-clip-horizontal
-      :width 100%
+    :padding 0px 40px
+  .jcarousel-clip-horizontal
+    :-moz-border-radius 15px
+    :background #2DA5CA
+    :padding 40px 20px 40px 0
+    :height auto
+  .jcarousel-list
+  .jcarousel-item
+    :text-align center
+    :Xpadding 5px
+    :margin 0 10px
+    :Xborder 1px solid lime
+  .jcarousel-item-horizontal
+  .jcarousel-item-placeholder
+    :background #fff
+    :color #000
+  .jcarousel-next-horizontal
+    :position absolute
+    :top 50px
+    :right 5px
+    :width 32px
+    :height 32px
+    :cursor pointer
+    :background transparent url(/js/plugins/jcarousel/skins/tango/next-horizontal.png) no-repeat 0 0
+  .jcarousel-next-horizontal
+    &:hover
+      :background-position -32px 0
+    &:active
+      :background-position -64px 0
+  .jcarousel-next-disabled-horizontal
+    :cursor default
+    :background-position -96px 0
+    &:hover, &:active
+      :cursor default
+      :background-position -96px 0
+  .jcarousel-prev-horizontal
+    :position absolute
+    :top 43px
+    :left 5px
+    :width 32px
+    :height 32px
+    :cursor pointer
+    :background transparent url(/js/plugins/jcarousel/skins/tango/prev-horizontal.png) no-repeat 0 0
+  .jcarousel-prev-horizontal
+    &:hover
+      :background-position -32px 0
+    &:active
+      :background-position -64px 0
+  .jcarousel-prev-disabled-horizontal
+    :cursor default
+    :background-position -96px 0
+    &:hover, &:active
+      :cursor default
+      :background-position -96px 0
+    &:hover, &:active
+      :cursor default
+      :background-position 0 -96px
+  .jcarousel-prev-vertical
+    :position absolute
+    :top 5px
+    :left 43px
+    :width 32px
+    :height 32px
+    :cursor pointer
+    :background transparent url(prev-vertical.png) no-repeat 0 0
+    &:hover
+      :background-position 0 -32px
+    &:active
+      :background-position 0 -64px
+  .jcarousel-prev-disabled-vertical
+    :cursor default
+    :background-position 0 -96px
+    &:hover, &:active
+      :cursor default
+      :background-position 0 -96px
 
 /*-------------------------------------------------------------------------
 /* Debug
 /*-------------------------------------------------------------------------
 .debug
   :display none
+
+@import 'slideshow'

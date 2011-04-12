@@ -1,6 +1,8 @@
 // Initialization
 (function($){
   $(document).ready( function(){
-    $(".slideshow").jcarousel();
+    $(".slideshow").jcarousel({
+      visible: 4
+    });
   });
 })(jQuery);

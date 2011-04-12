@@ -12,16 +12,16 @@
     %meta{ :content=>"Ramaze, Your own keywords", :name=>"keywords" }
     %meta{ :content=>"#{Time.now.iso8601}", :name=>"date" }
     
-    %script{ :type=>"text/javascript", :src=>"js/html5.js" }
-    %script{ :type=>"text/javascript", :src=>"js/jquery.js" }
+    %script{ :type=>"text/javascript", :src=>"/js/html5.js" }
+    %script{ :type=>"text/javascript", :src=>"/js/jquery.js" }
     
-    %link{ :rel=>:stylesheet, :type=>"text/css", :href=>"/js/plugins/jcarousel/skins/tango/skin.css" }
     %link{ :rel=>:stylesheet, :type=>"text/css", :href=>"/css/main" }
 
   %body
     %header.Header#Header
-      %a{ :href=>"/" }
-        %img.Logo{ :src=>"/img/logo.gif", :alt=>"Ovative Group: Realizing Innovation" }
+      .wrapper
+        %a{ :href=>"/" }
+          %img.Logo{ :src=>"/img/logo.gif", :alt=>"Ovative Group: Realizing Innovation" }
     
     %nav.MainNav#MainNav
       .wrapper

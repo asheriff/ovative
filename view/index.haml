@@ -1,18 +1,21 @@
 - @title = "Who We Are"
 - @h1 = "Bringing Companies to Competive Advantage for their <em>Digital Future</em>"
 
+%p= Faker::Lorem.paragraph(15)
+
 %h2 Enterprise Clients
-%ul.slideshow.jcarousel-skin-tango
+%ul.slideshow.jcarousel-skin-default
   - @enterprise_clients.each_with_index do |client,i|
     %li
-      %a{ :href=>"/client/#{i}", :rel=>:popin }
-        %img{ :src=>client.logo }
+      .slide
+        %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
 %h2 Emerging Innovation Clients
-%ul.slideshow.jcarousel-skin-tango
-  - @emerging_clients.each do |client|
+%ul.slideshow.jcarousel-skin-default
+  - @emerging_clients.each_with_index do |client,i|
     %li
-      %img{ :src=>client.logo }
+      .slide
+        %a{ :href=>"/clients/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
 
 %h2 Our Team
 %p= Faker::Lorem.paragraph(20)
