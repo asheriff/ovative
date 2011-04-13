@@ -1,23 +1,25 @@
 (function($){
   
   var defaults = {
-    
+    collapseOnScroll: true
   };
   
   $(window).bind('load.jcarousel_content', function() { windowLoaded = true; });
   
   $.jcarousel_content = function(e, o){
+    var self = this;
     this.options = $.extend({}, defaults, o || {});
     
-    this.expended_index = null;
-    
     this.list = $(e);
+    this.jcarousel = this.list.data('jcarousel');
+    this.expended_index = null;
     this.content_block_container = $('<div class="jcarousel-content-blocks"></div>').insertAfter(this.list).hide();
     
     this.list.find('.jcarousel-content-block').appendTo(this.content_block_container).hide();
     
-    var self = this;
-    // Hookup events to show content
+    
+    // Hookup events
+    
     this.list.find(".jcarousel-content-show").bind("click", function(){
       self.expand( $(this).closest('.jcarousel-item').index() );
       return false;
@@ -33,6 +35,15 @@
       return false;
     });
     
+    // IMPROVE: This will clobber any callbacks already on the jcarousel.  It
+    // should probably save a reference to the existing obj and call it.
+    this.jcarousel.options.itemFirstOutCallback = {
+      onBeforeAnimation: function(){
+        if( self.options.collapseOnScroll ){
+          self.collapse_current(true);
+        }
+      }
+    };
   };
   
   // Create shortcut for internal use
@@ -46,7 +57,7 @@
 
   $jcc.fn.extend({
     /**
-     * Shows the +i+th content block
+     * Shows the +i+th content block.
      */
     expand: function(i){
       if( this.expended_index !== null ){
@@ -59,10 +70,10 @@
     },
     
     /**
-     * Hide the +i+th content block
+     * Hide the +i+th content block.
      */
     collapse: function(i, hide_parent){
-      if( hide_parent){
+      if( hide_parent ){
         this.content_block_container.hide();
       }
       this.content_block_container.children().eq(i).hide();
@@ -71,14 +82,15 @@
     },
     
     /**
-     * Hide the current expanded content block
+     * Hide the current expanded content block.
      */
     collapse_current: function(hide_parent){
+      if( this.expended_index === null ) return;
       this.collapse( this.expended_index, hide_parent );
     },
     
     /**
-     * Toggles the +i+th content block
+     * Toggles the +i+th content block.
      */
     toggle: function(i, hide_parent){
       if( i === this.expended_index ){
@@ -88,6 +100,9 @@
       }
     },
     
+    /**
+     * Toggles show/hide links in +i+th content block.
+     */
     toggle_links: function(i){
       this.list.children().eq(i).find('.jcarousel-content-show, .jcarousel-content-hide').toggle();
     }
