@@ -32,7 +32,7 @@
               %a.jcarousel-content-show.icon.icon_more{ :href=>"#service_#{i}" } Learn More
               %a.jcarousel-content-hide.icon.icon_less.hidden{ :href=>"" } Close
             .jcarousel-content-block{ :id=>"service_#{i}" }
-              %h4 #{i} #{Faker::Lorem.sentence}
+              %h4 #{service.name}
               - (rand(3)+1).times do
                 %p #{Faker::Lorem.paragraph(20)}
               

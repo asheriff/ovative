@@ -36,7 +36,7 @@ class MainController < Controller
       3.times do
         @services << OpenStruct.new({
           :image => service.sub("public",""),
-          :name => Faker::Company.bs.split(' ')[0,rand>0.5?1:3].map{ |w| w.capitalize }.join(' '),
+          :name => Faker::Company.bs.split(' ')[0,rand>0.3?1:3].map{ |w| w.capitalize }.join(' '),
           :abstract => Faker::Lorem.sentence(10)
         })
       end

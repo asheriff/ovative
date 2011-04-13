@@ -9,10 +9,12 @@
   $.jcarousel_content = function(e, o){
     this.options = $.extend({}, defaults, o || {});
     
-    this.list = $(e);
-    this.content_blocks = $('<div class="jcarousel-content-blocks"></div>').insertAfter(this.list).hide();
+    this.expended_index = null;
     
-    this.list.find('.jcarousel-content-block').appendTo(this.content_blocks).hide();
+    this.list = $(e);
+    this.content_block_container = $('<div class="jcarousel-content-blocks"></div>').insertAfter(this.list).hide();
+    
+    this.list.find('.jcarousel-content-block').appendTo(this.content_block_container).hide();
     
     var self = this;
     // Hookup events to show content
@@ -27,7 +29,7 @@
     });
     
     this.list.find(".jcarousel-content-toggle").bind("click", function(){
-      alert('toggle');
+      self.toggle( $(this).closest('.jcarousel-item').index(), true );
       return false;
     });
     
@@ -47,10 +49,13 @@
      * Shows the +i+th content block
      */
     expand: function(i){
-      this.collapse_except(i);
-      this.content_blocks.show();
-      this.content_blocks.children().eq(i).show();
+      if( this.expended_index !== null ){
+        this.collapse(this.expended_index);
+      }
+      this.content_block_container.show();
+      this.content_block_container.children().eq(i).show(200);
       this.toggle_links(i);
+      this.expended_index = i;
     },
     
     /**
@@ -58,19 +63,29 @@
      */
     collapse: function(i, hide_parent){
       if( hide_parent){
-        this.content_blocks.hide();
+        this.content_block_container.hide();
       }
-      this.content_blocks.children().eq(i).hide();
+      this.content_block_container.children().eq(i).hide();
       this.toggle_links(i);
+      this.expended_index = null;
     },
     
     /**
-     * Hide all except the +i+th content block
+     * Hide the current expanded content block
      */
-    collapse_except: function(i){
-      this.content_blocks.children()
-        .not(this.content_blocks.children().eq(i))
-        .hide();
+    collapse_current: function(hide_parent){
+      this.collapse( this.expended_index, hide_parent );
+    },
+    
+    /**
+     * Toggles the +i+th content block
+     */
+    toggle: function(i, hide_parent){
+      if( i === this.expended_index ){
+        this.collapse_current(hide_parent);
+      } else{
+        this.expand(i);
+      }
     },
     
     toggle_links: function(i){
