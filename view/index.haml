@@ -11,12 +11,9 @@
           { jcarousel_options: {
               visible: 4,
               scroll: 4,
-              itemLastInCallback: function(carousel, li){
-                // BUG: hides wrong border if visible%total!=0
-                $(li).css({borderRightWidth: "0px"});
-              },
-              itemVisibleOutCallback: function(carousel, li){
-                $(li).css({borderRightWidth: "1px"});
+              itemLastInCallback: function(carousel, li, index){
+                carousel.list.children().css({borderRightWidth: "1px"});
+                carousel.get(index).css({borderRightWidth: "0px"});
               }
           }}
       - @services.each_with_index do |service,i|
@@ -65,12 +62,9 @@
           { jcarousel_options: {
               visible: 5,
               scroll: 5,
-              itemLastInCallback: function(carousel, li){
-                // BUG: hides wrong border if visible%total!=0
-                $(li).css({borderRightWidth: "0px"});
-              },
-              itemVisibleOutCallback: function(carousel, li){
-                $(li).css({borderRightWidth: "1px"});
+              itemLastInCallback: function(carousel, li, index){
+                carousel.list.children().css({borderRightWidth: "1px"});
+                carousel.get(index).css({borderRightWidth: "0px"});
               }
           }}
       - @associates.each_with_index do |user,i|
