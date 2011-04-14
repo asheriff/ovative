@@ -1,7 +1,13 @@
+/* 
+ * TODO
+ *  - Slidedown annimation is choppy [IE6-8]
+ */
 (function($){
   
   var defaults = {
-    collapseOnScroll: true
+    onScrollCollapse: true,
+    itemExpandCallback: null,
+    itemCollapseCallback: null
   };
   
   $(window).bind('load.jcarousel_content', function() { windowLoaded = true; });
@@ -39,8 +45,8 @@
     // should probably save a reference to the existing obj and call it.
     this.jcarousel.options.itemFirstOutCallback = {
       onBeforeAnimation: function(){
-        if( self.options.collapseOnScroll ){
-          self.collapse_current(true);
+        if( self.options.onScrollCollapse ){
+          self.collapseCurrent(true);
         }
       }
     };
@@ -56,35 +62,64 @@
   $jcc.fn.extend = $jcc.extend = $.extend;
 
   $jcc.fn.extend({
+    notify: function(cb, evt, obj){
+      this.callback(cb, evt, obj);
+    },
+    
+    callback: function(cb, evt, obj){
+      if (this.options[cb] == null || (typeof this.options[cb] != 'object' && evt != 'onAfterAnimation')) {
+        return;
+      }
+      
+      var callback = typeof this.options[cb] == 'object' ? this.options[cb][evt] : this.options[cb];
+      
+      if( !$.isFunction(callback) ){
+        return;
+      }
+      
+      callback(this, obj.get(0));
+    },
+    
     /**
      * Shows the +i+th content block.
      */
     expand: function(i){
+      var item = this.get(i);
+      
       if( this.expended_index !== null ){
         this.collapse(this.expended_index);
       }
+      
+      this.notify('itemExpandCallback', 'onBeforeAnimation', item);
       this.content_block_container.show();
-      this.content_block_container.children().eq(i).show(200);
+      this.content_block_container.children().eq(i).slideDown(300);
       this.toggle_links(i);
       this.expended_index = i;
+      this.notify('itemExpandCallback', 'onAfterAnimation', item);
     },
     
     /**
      * Hide the +i+th content block.
      */
     collapse: function(i, hide_parent){
+      var item = this.get(i);
+      
+      this.notify('itemCollapseCallback', 'onBeforeAnimation', item);
+      
       if( hide_parent ){
         this.content_block_container.hide();
       }
+      
       this.content_block_container.children().eq(i).hide();
       this.toggle_links(i);
       this.expended_index = null;
+      this.notify('itemCollapseCallback', 'onAfterAnimation', item);
     },
     
     /**
      * Hide the current expanded content block.
      */
-    collapse_current: function(hide_parent){
+    collapseCurrent: function(hide_parent){
       if( this.expended_index === null ) return;
       this.collapse( this.expended_index, hide_parent );
     },
@@ -94,7 +129,7 @@
      */
     toggle: function(i, hide_parent){
       if( i === this.expended_index ){
-        this.collapse_current(hide_parent);
+        this.collapseCurrent(hide_parent);
       } else{
         this.expand(i);
       }
@@ -105,6 +140,13 @@
      */
     toggle_links: function(i){
       this.list.children().eq(i).find('.jcarousel-content-show, .jcarousel-content-hide').toggle();
+    },
+    
+    /**
+     * Returns a jQuery object for the +i+th index
+     */
+    get: function(i){
+      return this.list.children().eq(i);
     }
   });
   

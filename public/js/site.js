@@ -19,8 +19,32 @@
     ////////////////////////////////////////////////////////////////////////////
     // Services Slideshow Content
     ////////////////////////////////////////////////////////////////////////////
-    var foo = $("#Services .slides").jcarousel_content().data("jcarousel_content");
-    // foo.show(2);
+    var service_tab = $('<div class="active_item_indicator"><div>&nbsp;</div></div>')
+      .appendTo($('#Services'))
+      .css({
+        position: 'absolute',
+        display: 'none'
+      })
+    ;
+    
+    $("#Services .slides").jcarousel_content({
+      itemExpandCallback: function(c, item){
+        var e = $(item);
+        var pos = e.offset();
+        
+        service_tab
+          .width( e.width() )
+          .css({
+            top: pos.top - service_tab.height(),
+            left: pos.left
+          })
+          .show()
+        ;
+      },
+      itemCollapseCallback: function(){
+        service_tab.hide();
+      }
+    });
     
   });
   
