@@ -7,6 +7,13 @@ class Controller < Ramaze::Controller
   helper :navigation
   helper :html
   engine :Haml
+  
+  layout do |path, wish|
+    case
+      when request.xhr? then nil
+      else :default
+    end
+  end
 end
 
 # Here go your requires for subclasses of Controller:

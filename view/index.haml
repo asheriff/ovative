@@ -41,7 +41,7 @@
       - @enterprise_clients.each_with_index do |client,i|
         %li
           .slide
-            %a{ :href=>"/client/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+            %a{ :href=>"/client/#{i}", :rel=>:modal, :style=>"background-image: url(#{client.logo})" }
 
 %section#EmergingClients
   %h2 Emerging Innovation Clients
@@ -50,7 +50,7 @@
       - @emerging_clients.each_with_index do |client,i|
         %li
           .slide
-            %a{ :href=>"/client/#{i}", :rel=>:popin, :style=>"background-image: url(#{client.logo})" }
+            %a{ :href=>"/client/#{i}", :rel=>:modal, :style=>"background-image: url(#{client.logo})" }
 
 %section#Associates
   %h2 Our Team
@@ -70,9 +70,9 @@
       - @associates.each_with_index do |user,i|
         %li
           .slide
-            %a{ :href=>"/associates/#{i}", :rel=>:popin }
+            %a{ :href=>"/associates/#{i}", :rel=>:modal }
               %img{ :src=>user.image }
             .name
-              %a{ :href=>"/associates/#{i}", :rel=>:popin } #{user.name}
+              %a{ :href=>"/associates/#{i}", :rel=>:modal } #{user.name}
             .title
               #{user.title}

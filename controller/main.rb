@@ -43,18 +43,26 @@ class MainController < Controller
   
   def client(id)
     @title = Faker::Company.name
+    @paragraphs = id.to_i + 1
+    @client = OpenStruct.new({
+      :logo => Dir["public/img/client_logos/*"].to_a.shuffle.pop.sub("public","")
+    })
+    
     %(
       %h2= Faker::Company.bs
-      - 4.times do
+      %img{ :src=>@client.logo }
+      - @paragraphs.times do
         %p= Faker::Lorem.paragraph(20)
     ).unindent
   end
   
   def associates(id)
+    sleep(1)
+    @paragraphs = id.to_i + 1
     @title = "Associates"
     %(
       %h2= Faker::Name.name
-      - 4.times do
+      - @paragraphs.times do
         %p= Faker::Lorem.paragraph(30)
     ).unindent
   end
