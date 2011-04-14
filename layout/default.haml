@@ -64,9 +64,25 @@
         %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
   
     .debug
+      %h2 Debug Info
+      %h3 Page Errors
+      %ul
+        %li
+          %a{ :href=>"/error/404" } 404 Page not found
+        %li
+          %a{ :href=>"/error/500" } 500 Server error
+      %h3 Modal Errors
+      %ul
+        %li
+          %a{ :href=>"/error/404", :rel=>:modal } 404 Page not found
+        %li
+          %a{ :href=>"/error/500", :rel=>:modal } 500 Server error
+        %li
+          %a{ :href=>"/error/timeout", :rel=>:modal } Timeout
+      %hr
       =h request.inspect
     
-    %script{ :type=>"text/javascript", :src=>"js/plugins/jquery.jcarousel.js" }
-    %script{ :type=>"text/javascript", :src=>"js/plugins/jquery.jcarousel-content.js" }
-    %script{ :type=>"text/javascript", :src=>"js/plugins/jquery.simplemodal.js" }
-    %script{ :type=>"text/javascript", :src=>"js/site.js" }
+    %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.jcarousel.js" }
+    %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.jcarousel-content.js" }
+    %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.simplemodal.js" }
+    %script{ :type=>"text/javascript", :src=>"/js/site.js" }
