@@ -20,7 +20,7 @@ class MainController < Controller
     ]
     
     @associates = []
-    Dir["public/img/team_memebers/*"].to_a.each_with_index do |user,i|
+    Dir["public/img/team_photos/*"].to_a.each_with_index do |user,i|
       3.times do
         @associates << OpenStruct.new({
           :image => user.sub("public",""),
@@ -29,7 +29,7 @@ class MainController < Controller
         })
       end
     end
-    @associates.shuffle!
+    @associates = @associates.first(12).shuffle!
     
     @services = []
     Dir["public/img/icons/ovative/*"].to_a.each_with_index do |service,i|
