@@ -33,15 +33,12 @@ class MainController < Controller
     
     @services = []
     Dir["public/img/icons/ovative/*"].to_a.each_with_index do |service,i|
-      3.times do
-        @services << OpenStruct.new({
-          :image => service.sub("public",""),
-          :name => Faker::Company.bs.split(' ')[0,rand>0.3?1:3].map{ |w| w.capitalize }.join(' '),
-          :abstract => Faker::Lorem.sentence(10)
-        })
-      end
+      @services << OpenStruct.new({
+        :image => service.sub("public",""),
+        :name => Faker::Company.bs.split(' ')[0,rand>0.3?1:3].map{ |w| w.capitalize }.join(' '),
+        :abstract => Faker::Lorem.sentence(10)
+      })
     end
-    @services.slice!(0,6).shuffle!
   end
   
   def client(id)
