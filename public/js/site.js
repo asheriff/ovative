@@ -14,8 +14,9 @@
   //
   $.modal.defaults.opacity = 30;
   $.modal.defaults.overlayId = "ModalOverlay";
-  $.modal.defaults.containerId = "Modal"
-  $.modal.defaults.minHeight = "300px"
+  $.modal.defaults.containerId = "Modal";
+  $.modal.defaults.minHeight = "300px";
+  $.modal.defaults.closeClass = "close_modal";
   
 })(jQuery);
 
@@ -30,7 +31,7 @@
     // Links
     //
     $('A[rel~=modal]').live('click', function(){
-      var modal = $.modal('<div id="ModalContent"><div class="loading"><img src="/img/ajax_loading.gif" alt="Loading..."/><div class="text">Loading...</div></div></div>');
+      var modal = $('#ModalContent').modal();
       
       var show_loading_img = window.setTimeout( function(){
         $('#ModalContent .loading').css({visibility: 'visible'});
@@ -39,15 +40,17 @@
       $.get(this.href)
         .success(function(response){
           window.clearTimeout(show_loading_img);
-          $('#ModalContent').html(response);
+          $('#ModalContent .bd').html(response);
+          $('#ModalContent .controls').show();
           modal.update("auto");
         })
         .error(function(xhr, status){
           if( status === "timeout" ){
-            $('#ModalContent').html("Opps! This request has timed out.");
+            $('#ModalContent .bd').html("Opps! This request has timed out.");
           } else{
-            $('#ModalContent').html("Opps! An error has occurred.");
+            $('#ModalContent .bd').html("Opps! An error has occurred.");
           }
+          $('#ModalContent .controls').show();
           window.clearTimeout(show_loading_img);
           modal.update("auto");
         })

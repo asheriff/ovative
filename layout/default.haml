@@ -82,6 +82,14 @@
       %hr
       =h request.inspect
     
+    #ModalContent
+      .bd
+        .loading
+          %img{ :src=>"/img/ajax_loading.gif", :alt=>"Loading..." }
+          .text Loading...
+      .controls
+        %a.button.close_modal{ :href=>'#' } Close
+      
     %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.jcarousel.js" }
     %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.jcarousel-content.js" }
     %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.simplemodal.js" }

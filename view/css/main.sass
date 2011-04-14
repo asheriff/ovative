@@ -172,6 +172,21 @@ HR
   :background-image url(/img/icons/general/bullet_disabled.gif)
 
 /*-------------------------------------------------------------------------
+/* Buttons
+/*-------------------------------------------------------------------------
+.button
+  :padding .3em 1.2em
+  +border-radius(1em)
+  :line-height 1em
+  :background $COLOR_ORANGE
+  :color #FFF
+  :font-weight bold
+  &:HOVER
+    :background lighten($COLOR_ORANGE, 15%)
+  &:ACTIVE
+    :background darken($COLOR_ORANGE, 15%)
+
+/*-------------------------------------------------------------------------
 /* Components
 /*-------------------------------------------------------------------------
 .Info
@@ -292,13 +307,17 @@ HR
   :border 1px solid #FFF
   :background #FFF
   +border-radius(20px)
-  #ModalContent
-    :padding 2em
   .loading
     :text-align center
     :visibility hidden
     IMG
     .text
+  .controls
+    :display none
+    :text-align right
+#ModalContent
+  :display none
+  :padding 2em
 
 /*-------------------------------------------------------------------------
 /* Components Instances
