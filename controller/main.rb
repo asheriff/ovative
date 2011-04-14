@@ -20,8 +20,8 @@ class MainController < Controller
     ]
     
     @associates = []
-    Dir["public/img/team_photos/*"].to_a.each_with_index do |user,i|
-      3.times do
+    3.times do
+      Dir["public/img/team_photos/*"].to_a.each_with_index do |user,i|
         @associates << OpenStruct.new({
           :image => user.sub("public",""),
           :name => i!=3 ? Faker::Name.name : "Henry John Temple Viscount Palmerston",
@@ -29,13 +29,13 @@ class MainController < Controller
         })
       end
     end
-    @associates = @associates.first(12).shuffle!
+    @associates = @associates.first(12)
     
     @services = []
     Dir["public/img/icons/ovative/*"].to_a.each_with_index do |service,i|
       @services << OpenStruct.new({
         :image => service.sub("public",""),
-        :name => Faker::Company.bs.split(' ')[0,rand>0.3?1:3].map{ |w| w.capitalize }.join(' '),
+        :name => Faker::Company.bs.split(' ')[0,rand>0.3?3:1].map{ |w| w.capitalize }.join(' '),
         :abstract => Faker::Lorem.sentence(10)
       })
     end
