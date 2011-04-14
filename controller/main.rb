@@ -70,4 +70,19 @@ class MainController < Controller
   def notemplate
     "there is no 'notemplate.xhtml' associated with this action"
   end
+  
+  def error(status='404')
+    sleep(1)
+    
+    case status.to_s
+    when 'timeout'
+      sleep(20)
+    when '404'
+      redirect "/file/not/found"
+    when '500'
+      raise "server error 500"
+    else
+      "Unknown"
+    end
+  end
 end

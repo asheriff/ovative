@@ -1,21 +1,34 @@
+////////////////////////////////////////////////////////////////////////////////
 // Config
-//
+////////////////////////////////////////////////////////////////////////////////
 (function($){
+  //
+  // Ajax
+  //
+  $.ajaxSetup({
+    timeout: 5*1000
+  });
+  
+  //
+  // Modal popin
+  //
   $.modal.defaults.opacity = 30;
   $.modal.defaults.overlayId = "ModalOverlay";
   $.modal.defaults.containerId = "Modal"
   $.modal.defaults.minHeight = "300px"
+  
 })(jQuery);
 
+////////////////////////////////////////////////////////////////////////////////
 // Initialization
-//
+////////////////////////////////////////////////////////////////////////////////
 (function($){
   $.metadata.setType("elem", "script");
   
   $(document).ready( function(){
-    ////////////////////////////////////////////////////////////////////////////
+    //
     // Links
-    ////////////////////////////////////////////////////////////////////////////
+    //
     $('A[rel~=modal]').live('click', function(){
       var modal = $.modal('<div id="ModalContent"><div class="loading"><img src="/img/ajax_loading.gif" alt="Loading..."/><div class="text">Loading...</div></div></div>');
       
@@ -23,22 +36,29 @@
         $('#ModalContent .loading').css({visibility: 'visible'});
       }, 500);
       
-      // TODO: Handle xhr timeouts.
-      $.get(this.href, function(response, status){
-        if( status === "success" ){
+      $.get(this.href)
+        .success(function(response){
           window.clearTimeout(show_loading_img);
           $('#ModalContent').html(response);
           modal.update("auto");
-        }
-        // TODO: Handle xhr errors.
-      });
+        })
+        .error(function(xhr, status){
+          if( status === "timeout" ){
+            $('#ModalContent').html("Opps! This request has timed out.");
+          } else{
+            $('#ModalContent').html("Opps! An error has occurred.");
+          }
+          window.clearTimeout(show_loading_img);
+          modal.update("auto");
+        })
+      ;
       
       return false;
     });
     
-    ////////////////////////////////////////////////////////////////////////////
+    //
     // Slideshows
-    ////////////////////////////////////////////////////////////////////////////
+    //
     $(".slides").each(function(){
       var $$ = $(this);
       
@@ -48,9 +68,9 @@
       });
     });
     
-    ////////////////////////////////////////////////////////////////////////////
+    //
     // Services Slideshow Content
-    ////////////////////////////////////////////////////////////////////////////
+    //
     var service_tab = $('<div class="active_item_indicator"><div>&nbsp;</div></div>')
       .appendTo($('#Services'))
       .css({
