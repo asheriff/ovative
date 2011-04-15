@@ -5,9 +5,8 @@
   %h2 Services
   .slideshow
     %ul.slides.jcarousel-skin-services
-      %script
+      %script{ :type=>:data }
         :plain
-          // BUG: throwing 'invalid label' error in FF3
           { jcarousel_options: {
               visible: 4,
               scroll: 4,
@@ -56,9 +55,8 @@
   %h2 Our Team
   .slideshow
     %ul.slides.jcarousel-skin-photos
-      %script
+      %script{ :type=>:data }
         :plain
-          // BUG: throwing 'invalid label' error in FF3
           { jcarousel_options: {
               visible: 5,
               scroll: 5,
