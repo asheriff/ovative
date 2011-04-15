@@ -2,11 +2,13 @@
 // Config
 ////////////////////////////////////////////////////////////////////////////////
 (function($){
+  "use strict";
+  
   //
   // Ajax
   //
   $.ajaxSetup({
-    timeout: 5*1000
+    timeout: 20*1000
   });
   
   //
@@ -18,13 +20,17 @@
   $.modal.defaults.minHeight = "300px";
   $.modal.defaults.closeClass = "close_modal";
   
+  //
+  // Metadata plugin
+  //
+  $.metadata.setType("elem", "script");
 })(jQuery);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Initialization
 ////////////////////////////////////////////////////////////////////////////////
 (function($){
-  $.metadata.setType("elem", "script");
+  "use strict";
   
   $(document).ready( function(){
     //
@@ -45,11 +51,12 @@
           modal.update("auto");
         })
         .error(function(xhr, status){
+          var error_message = "Opps! An error has occurred.";
           if( status === "timeout" ){
-            $('#ModalContent .bd').html("Opps! This request has timed out.");
-          } else{
-            $('#ModalContent .bd').html("Opps! An error has occurred.");
+            error_message = "Opps! This request has timed out."
           }
+          
+          $('#ModalContent .bd').html(error_message);
           $('#ModalContent .controls').show();
           window.clearTimeout(show_loading_img);
           modal.update("auto");

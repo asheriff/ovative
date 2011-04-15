@@ -3,14 +3,13 @@
  *  - Slidedown annimation is choppy [IE6-8]
  */
 (function($){
+  "use strict";
   
   var defaults = {
     onScrollCollapse: true,
     itemExpandCallback: null,
     itemCollapseCallback: null
   };
-  
-  $(window).bind('load.jcarousel_content', function() { windowLoaded = true; });
   
   $.jcarousel_content = function(e, o){
     var self = this;
