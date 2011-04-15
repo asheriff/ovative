@@ -62,6 +62,9 @@ BODY
   :font 75%/1.2em $FONT
   :color #333
 
+PRE, CODE, TT, KBD
+  :font-family 'Courier New' Courier monospace
+  :font-size 1.2em
 A
   :text-decoration none
   :color $COLOR_ORANGE
@@ -361,6 +364,15 @@ HR
 /* Debug
 /*-------------------------------------------------------------------------
 .debug
-  :Xdisplay none
+  :font-family 'Courier New'
+  :overflow auto
+  :padding 1em
+  :background #000
+  :border 5px dashed #000
+  :color #999 !important
+  H1, H2, H3, H4, H5, H6
+    :color #CCC !important
+  A
+    :color blue !important
 
 @import 'slideshow'
