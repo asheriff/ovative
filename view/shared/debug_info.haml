@@ -1,0 +1,20 @@
+- if Ramaze.options.mode == :dev
+  .debug
+    %h1 Debug Info (#{Ramaze.options.mode})
+    %h2 Page Errors
+    %ul
+      %li
+        %a{ :href=>"/error/404" } 404 Page not found
+      %li
+        %a{ :href=>"/error/500" } 500 Server error
+    %h2 Modal Errors
+    %ul
+      %li
+        %a{ :href=>"/error/404", :rel=>:modal } 404 Page not found
+      %li
+        %a{ :href=>"/error/500", :rel=>:modal } 500 Server error
+      %li
+        %a{ :href=>"/error/timeout", :rel=>:modal } Timeout
+    %hr
+    %pre
+      =h request.to_yaml

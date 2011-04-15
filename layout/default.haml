@@ -62,25 +62,6 @@
             - main_nav.each do |link|
               %li{ :class=>css_position(main_nav, link) }> <a href="#{link.href}">#{link.name}</a>
         %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-  
-    .debug
-      %h2 Debug Info
-      %h3 Page Errors
-      %ul
-        %li
-          %a{ :href=>"/error/404" } 404 Page not found
-        %li
-          %a{ :href=>"/error/500" } 500 Server error
-      %h3 Modal Errors
-      %ul
-        %li
-          %a{ :href=>"/error/404", :rel=>:modal } 404 Page not found
-        %li
-          %a{ :href=>"/error/500", :rel=>:modal } 500 Server error
-        %li
-          %a{ :href=>"/error/timeout", :rel=>:modal } Timeout
-      %hr
-      =h request.inspect
     
     #ModalContent
       .bd
@@ -94,3 +75,5 @@
     %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.jcarousel-content.js" }
     %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.simplemodal.js" }
     %script{ :type=>"text/javascript", :src=>"/js/site.js" }
+    
+    = render_partial "shared/debug_info"
