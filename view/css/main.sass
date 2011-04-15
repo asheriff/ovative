@@ -160,7 +160,7 @@ HR
 .wrapper
   :width $SITE_WIDTH
   :margin 0px auto
-  .page_home .Content &
+  .page_home.js .Content &
     :width $SITE_WIDTH - $PAGE_HOME_WIDTH_DELTA
 
 /*-------------------------------------------------------------------------
@@ -215,7 +215,7 @@ HR
 /*-------------------------------------------------------------------------
 .slideshow
   :width $SITE_WIDTH
-  .page_home .Content &
+  .page_home.js .Content &
     :margin-left -$PAGE_HOME_WIDTH_DELTA/2
   
   UL.slides
@@ -223,8 +223,9 @@ HR
     :padding 0
     LI
       :list-style none
-      :display inline
-      :float left
+      .js &
+        :display inline
+        :float left
   *
     :box-sizing content-box
     :-moz-box-sizing content-box
