@@ -7,7 +7,10 @@ require 'rubygems'
 require 'ramaze'
 require 'faker'
 require 'ostruct'
-require 'ruby-debug'
+begin
+  require 'ruby-debug'
+rescue LoadError
+end
 
 # Make sure that Ramaze knows where you are
 Ramaze.options.roots = [__DIR__]
