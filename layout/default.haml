@@ -12,7 +12,8 @@
     %meta{ :content=>"Ramaze, Your own keywords", :name=>"keywords" }
     %meta{ :content=>"#{Time.now.iso8601}", :name=>"date" }
     
-    %script{ :type=>"text/javascript", :src=>"/js/html5.js" }
+    /[if lt IE 9]
+      %script{ :type=>"text/javascript", :src=>"/js/html5.js" }
     %script{ :type=>"text/javascript", :src=>"/js/jquery.js" }
     %script{ :type=>"text/javascript", :src=>"/js/plugins/jquery.metadata.js" }
     
