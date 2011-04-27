@@ -5,11 +5,11 @@ module Ramaze
     module  Navigation
       def main_nav(selected_index=nil)
         links = 
-          [ ["/",         "Who We Are"],
-            ["/blog",     "Blog"],
-            ["/tools",    "Toolbox"],
-            ["/contact",  "Contact"],
-            ["/clients",  "Clients"],
+          [ ["/",           "Who We Are"],
+            ["/blog",       "Blog"],
+            ["/portfolio",  "Results"],
+            ["/contact",    "Contact"],
+            ["/clients",    "Clients"],
           ].map{ |link| OpenStruct.new( :href=>link[0], :name=>link[1] ) }
         
         if selected_index

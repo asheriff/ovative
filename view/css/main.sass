@@ -59,7 +59,7 @@ NAV
 /* Typography
 /*-------------------------------------------------------------------------
 BODY
-  :font 75%/1.2em $FONT
+  :font 75%/normal $FONT
   :color #333
 
 PRE, CODE, TT, KBD
@@ -160,7 +160,7 @@ HR
 .wrapper
   :width $SITE_WIDTH
   :margin 0px auto
-  .page_home.js .Content &
+  .page_home .Content &
     :width $SITE_WIDTH - $PAGE_HOME_WIDTH_DELTA
 
 /*-------------------------------------------------------------------------
@@ -210,6 +210,31 @@ HR
       :color #FFF
       :font-size 1.4em
 
+.grid_3_cols
+  :list-style none
+  :margin 0
+  :padding 0
+  :letter-spacing -.4em
+  :word-spacing -.4em
+  LI
+    :display inline-block
+    :*display inline
+    :*zoom 1
+    :letter-spacing normal
+    :word-spacing normal
+    :vertical-align top
+    :width $SITE_WIDTH/3
+  .item
+    :padding 0 20px 40px
+  .col_1 .item
+    :padding
+      :left 0px
+      :right 40px
+  .col_3 .item
+    :padding
+      :left 40px
+      :right 0px
+  
 /*-------------------------------------------------------------------------
 /* Slideshow
 /*-------------------------------------------------------------------------
@@ -360,5 +385,20 @@ HR
       :background $COLOR_ORANGE
       :*position relative
       :*top 4px
+
+#Portfolio
+  .img
+    :background #CCC
+    :height 100px
+  .abstract
+    :border-top 1px solid $COLOR_ORANGE
+    :margin-top .5em
+    :padding-top 1em
+  H2
+    :margin 1em 0 0
+    :font-size 1.4em
+    :color #999999
+  P
+    :margin 0 0 1.4em
 
 @import 'slideshow'

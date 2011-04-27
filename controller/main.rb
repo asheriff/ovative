@@ -56,6 +56,20 @@ class MainController < Controller
     ).unindent
   end
   
+  def portfolio
+    @items = []
+    
+    Dir["public/img/client_logos/*"].each do |client|
+      @items << OpenStruct.new({
+        :thumb => client.sub("public",""),
+        :name => Faker::Company.name,
+        :abstract => Faker::Lorem.paragraphs(rand(2)+1).join("\n\n")
+      })
+    end
+    
+    @items = [@items, @items].flatten.shuffle
+  end
+  
   def associates(id)
     sleep(1)
     @paragraphs = id.to_i + 1

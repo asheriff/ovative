@@ -1,0 +1,19 @@
+- @title = "Results"
+
+- cols = 3
+%ul.grid_3_cols#Portfolio
+  - @items.each_with_index do |item, i|
+    %li{ :class=>"col_#{i%cols + 1}" }
+      .item
+        .img
+          %img{ :src=>item.thumb }
+        .info
+          %h2= item.name
+          .abstract
+            :markdown
+              #{item.abstract}
+
+%style
+  :sass
+    H1
+      :visibility hidden
