@@ -249,10 +249,10 @@ HR
     :cursor pointer
   .jcarousel-next-horizontal
     :right 5px
-    :background transparent url(/img/components/slideshow/icon_next.gif) no-repeat 0 0
+    :background transparent url(/img/components/slideshow/skins/default/icon_next.gif) no-repeat 0 0
   .jcarousel-prev-horizontal
     :left 5px
-    :background transparent url(/img/components/slideshow/icon_prev.gif) no-repeat 0 0
+    :background transparent url(/img/components/slideshow/skins/default/icon_prev.gif) no-repeat 0 0
   .jcarousel-next-horizontal, .jcarousel-prev-horizontal
     &:hover
       :background-position -32px 0
@@ -267,11 +267,10 @@ HR
 
 .jcarousel-skin-default
   .jcarousel-clip
-    +border-radius( 15px )
-    :background #2DA5CA
+    :background #2DA5CA url(/img/components/slideshow/skins/default/bg_top.gif) no-repeat left top
+  .jcarousel-clip-bottom
+    :background url(/img/components/slideshow/skins/default/bg_bottom.gif) no-repeat left bottom
     :padding 40px 20px 40px 0
-    #EmergingClients &
-      :background #6BC1DA
   .slide
     :display block
     +border-radius( 5px )
@@ -285,20 +284,21 @@ HR
       :width 190px
       :background no-repeat center center
 
-.jcarousel-skin-photos
-  .jcarousel-item
-    :border-right 1px solid #BECBD1
-    :text-align left
-
-.jcarousel-skin-services
+.jcarousel-skin-white
   .jcarousel-clip
-    +border-radius( 15px )
-    :background #FFF
+    :background #FFF url(/img/components/slideshow/skins/white/bg_top.gif) no-repeat left top
+  .jcarousel-clip-bottom
+    :background url(/img/components/slideshow/skins/white/bg_bottom.gif) no-repeat left bottom
   .jcarousel-item
     :border-right 1px solid #BECBD1
     :text-align left
   .slide
     :padding 10px 10px 10px 0
+
+.jcarousel-skin-photos
+  .jcarousel-item
+    :border-right 1px solid #BECBD1
+    :text-align left
 
 /*-------------------------------------------------------------------------
 /* Modal
