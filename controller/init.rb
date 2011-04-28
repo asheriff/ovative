@@ -18,4 +18,5 @@ end
 
 # Here go your requires for subclasses of Controller:
 require __DIR__('main')
+require __DIR__('portfolio')
 require __DIR__('css_controller')

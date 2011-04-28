@@ -15,10 +15,13 @@ module Ramaze
         if selected_index
           links.each_with_index{ |link,i| link.selected = true if i==selected_index }
         else
-          links.each{ |link| link.selected = true if link.href == request.env["PATH_INFO"] }
+          links.each do |link|
+            if [request.env["PATH_INFO"], request.env["SCRIPT_NAME"]].include? link.href
+              link.selected = true
+            end
+          end
         end
       end
     end
   end
 end
-          

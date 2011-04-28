@@ -5,9 +5,11 @@
     %li
       .item
         .img
-          %img{ :src=>item.thumb }
+          %a{ :href=>"/portfolio/#{item.id}", :rel=>:modal }
+            %img{ :src=>item.thumb }
         .info
-          %h2= item.name
+          %h2
+            %a{ :href=>"/portfolio/#{item.id}", :rel=>:modal }= item.name
           .abstract
             :markdown
               #{item.abstract}

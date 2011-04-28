@@ -18,4 +18,5 @@
         %a{ :href=>"/error/timeout", :rel=>:modal } Timeout
     %hr
     %pre
+      =h request.env.class
       =h request.to_yaml
