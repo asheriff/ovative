@@ -67,6 +67,25 @@ class MainController < Controller
     ).unindent
   end
   
+  def blog
+    @posts = (0..rand(10)).map do |post|
+      post = OpenStruct.new({
+        :title => Faker::Lorem.sentence(rand(8)+1),
+        :post_date => Date.today - rand(2),
+        :author => Faker::Name.name,
+        :category => Faker::Lorem.words(rand(2)+1).join(" ").capitalize,
+        :comments => Array.new( rand(10) ),
+        :content => Faker::Lorem.paragraphs(rand(2)+1).join("\n\n")
+      })
+    end
+    
+    @categories = (0..rand(5)).map do |category|
+      categories = OpenStruct.new({
+        :name => Faker::Lorem.words(rand(2)+1).join(" ").capitalize,
+      })
+    end
+  end
+  
   def notemplate
     "there is no 'notemplate.xhtml' associated with this action"
   end
