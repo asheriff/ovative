@@ -3,6 +3,7 @@
 //-------------------------------------------------------------------------
 $SITE_WIDTH: 960px
 $PAGE_HOME_WIDTH_DELTA: 100px
+$SIDEBAR_WIDTH: 260px
 
 //-------------------------------------------------------------------------
 // Colors & fonts
@@ -11,6 +12,7 @@ $FONT: Helvetica, Arial, sans-serif
 $FONT_HEADINGS: "Arial Narrow", $FONT
 
 $COLOR_ORANGE: #F25623
+$COLOR_GREY: #999
 
 //-------------------------------------------------------------------------
 // Mixins
@@ -33,9 +35,6 @@ $COLOR_ORANGE: #F25623
 /*-------------------------------------------------------------------------
 /* General
 /*-------------------------------------------------------------------------
-*
-  :-moz-box-sizing border-box
-
 BODY
   :background #DFF0F6
   :margin 0
@@ -68,12 +67,14 @@ PRE, CODE, TT, KBD
 A
   :text-decoration none
   :color $COLOR_ORANGE
+  &:HOVER
+    :color darken($COLOR_ORANGE, 20%)
   .Footer &, .Info &
     :color #FFF
     &:HOVER
       :color $COLOR_ORANGE
 
-H1, H2
+H1
   :font-family $FONT_HEADINGS
   :text-transform uppercase
 
@@ -81,11 +82,11 @@ H1
   :display none
   :margin-top -1em
   :font bold 3em/1em $FONT_HEADINGS
-  :color #999999
+  :color $COLOR_GREY
   EM
     :color $COLOR_ORANGE
 H2
-  :font-size 1.8em
+  :font-size 1.6em
   :color $COLOR_ORANGE
   :margin 2em 0 1em
 H3
@@ -134,8 +135,43 @@ HR
       &.selected A
         :background $COLOR_ORANGE
         :padding-bottom 20px
+
 .Content
+  +clearfix
   :padding 6em 0 2em
+
+.Sidebar
+  :float right
+  :position relative
+  :left -1px
+  :width $SIDEBAR_WIDTH - 40px - 1px
+  :border-left 1px solid $COLOR_GREY
+  :padding-left 40px
+  H2
+    :margin-top 0
+  UL.links
+    :margin 1em 0
+    :padding 0
+    :list-style none
+    LI
+      :margin-top -1px
+      :padding .8em 0
+      :border
+        :width 1px 0
+        :style solid
+        :color $COLOR_GREY
+      * HTML &
+        :border none
+    A
+      :color #000
+      &:HOVER
+        :color $COLOR_ORANGE
+
+.MainContent
+  :float left
+  :width $SITE_WIDTH - $SIDEBAR_WIDTH - 40px
+  :border-right 1px solid $COLOR_GREY
+  :padding-right 40px - 1px
 
 .Footer
   :padding 2em 0
@@ -211,6 +247,8 @@ HR
       :margin 0
       :color #FFF
       :font-size 1.4em
+      :font-family $FONT_HEADINGS
+      :text-transform uppercase
 
 .grid_3_cols
   $grid_spacing: 80px
@@ -233,6 +271,38 @@ HR
   .item
     :padding 0 $grid_spacing 40px 0
 
+.posts
+  :list-style none
+  :margin 0
+  :padding 0
+.post
+  :margin 0 0 4em
+  .metadata
+    +clearfix
+    :padding 1em
+    :border
+      :width 1px 0
+      :style solid
+      :color $COLOR_GREY
+    EM
+      :color $COLOR_ORANGE
+      :font-weight bold
+      :margin-left .2em
+    DIV
+      :float left
+      :display inline
+      :margin-right 2em
+  H2.title
+    :margin-top 0
+    :font-family $FONT
+    :font-size 1.2em
+    :text-transform none
+  DIV.comment_count
+    :float right
+    :margin-right 0
+    EM
+      :margin-left   0
+    
 /*-------------------------------------------------------------------------
 /* Slideshow
 /*-------------------------------------------------------------------------
@@ -392,7 +462,7 @@ HR
   H2
     :margin 1em 0 0
     :font-size 1.4em
-    :color #999999
+    :color $COLOR_GREY
   P
     :margin 0 0 1.4em
     
@@ -402,5 +472,8 @@ HR
 .page_home
   H1
     :display block
+  H2
+    :font-family $FONT_HEADINGS
+    :text-transform uppercase
 
 @import 'slideshow'

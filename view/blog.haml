@@ -1,4 +1,33 @@
 - @title = "Blog"
 
-- 4.times do
-  %p= Faker::Lorem.paragraph(20)
+%section.MainContent
+  %ul.posts
+    - @posts.each do |post|
+      %li.post
+        %h2.title= post.title
+        .metadata
+          .date
+            At <em>#{post.post_date}</em>
+          .author
+            By <em><a href="#">#{post.author}</a></em>
+          .category
+            In <em><a href="#">#{post.category}</a></em>
+          .comment_count
+            (<em>#{post.comments.count}</em>)
+        .content
+          :markdown
+            #{post.content}
+
+%section.Sidebar
+  %h2 Categories
+  %ul.links
+    - @categories.each do |category|
+      %li
+        %a{ :href=>"#" }= category.name
+  
+  %h2 Recent Posts
+  %ul.links
+    - @posts.each do |post|
+      %li
+        %a{ :href=>"#" }= post.title
+  
