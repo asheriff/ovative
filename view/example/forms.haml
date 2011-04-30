@@ -1,0 +1,29 @@
+.form
+  .errors
+    %ul
+      - 3.times do
+        %li= Faker::Lorem.sentence
+  
+  %form{ :autocomplete=>:off }
+    .fields
+      - %w(text password file select radio checkbox).each do |type|
+        .field
+          .label= type.capitalize
+          .inputs
+            - if %w(radio checkbox).include?(type)
+              - 5.times do |i|
+                .options
+                  %label
+                    %input{ :type=>type, :value=>i }
+                    = Faker::Lorem.sentence(1).gsub(".","")
+            - elsif type == "select"
+              %select
+                - 5.times do |i|
+                  %option= Faker::Lorem.sentence(1).gsub(".","")
+            - else
+              %input{ :type=>type }
+    
+    .actions
+      %button{ :type=>:submit } Submit
+      %button{ :type=>:reset } Reset
+      %input{ :type=>:button, :value=>"Input" }

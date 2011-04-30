@@ -1,0 +1,18 @@
+- @title = "Login"
+
+.form
+  %form
+    .fields
+      .field
+        %label
+          Username
+          .inputs
+            %input{ :type=>:text, :size=>30, :name=>:name, :value=>"Jon Doe" }
+      .field
+        %label
+          Password
+          .inputs
+            %input{ :type=>:password, :size=>30, :name=>:pass }
+    
+    .actions
+      %button{ :type=>:submit } Submit

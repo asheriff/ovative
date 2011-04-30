@@ -13,6 +13,7 @@ $FONT_HEADINGS: "Arial Narrow", $FONT
 
 $COLOR_ORANGE: #F25623
 $COLOR_GREY: #999
+$COLOR_RED: #F00
 
 //-------------------------------------------------------------------------
 // Mixins
@@ -92,8 +93,12 @@ H2
 H3
   :font-size 1.2em
 
-P, UL, OL, DL
+P
   :margin 1.4em 0
+
+UL, OL
+  :margin 1.4em 0 1.4em 1em
+  :padding 1.4em 0 1.4em 1em
 
 EM
   :font-style normal
@@ -215,8 +220,10 @@ HR
 /*-------------------------------------------------------------------------
 /* Buttons
 /*-------------------------------------------------------------------------
-.button
+.button, BUTTON, INPUT[type=button]
+  :margin-right .2em
   :padding .3em 1.2em
+  :border none
   +border-radius(1em)
   :line-height 1em
   :background $COLOR_ORANGE
@@ -226,6 +233,35 @@ HR
     :background lighten($COLOR_ORANGE, 15%)
   &:ACTIVE
     :background darken($COLOR_ORANGE, 15%)
+
+
+/*-------------------------------------------------------------------------
+/* Forms
+/*-------------------------------------------------------------------------
+INPUT, SELECT, BUTTON
+  :font-family $FONT
+INPUT[type=text], INPUT[type=password], SELECT
+  :border 1px solid $COLOR_GREY
+  :padding .2em
+  :font-size 1.2em
+
+.form
+  .errors
+    :background lighten($COLOR_RED, 49%)
+    :border 1px solid $COLOR_RED
+    +border-radius(1em)
+    UL
+      :margin
+        :top 0
+        :bottom 0
+  .label
+    :font-weight bold
+  .field
+    :margin 1em 0
+    .inputs
+      :margin .4em 0 0
+  .actions
+    :margin-top 2em
 
 /*-------------------------------------------------------------------------
 /* Components
