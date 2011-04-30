@@ -72,10 +72,13 @@
     $(".slides").each(function(){
       var $$ = $(this);
       
-      $$.jcarousel( $$.metadata().jcarousel_options || {
-        visible: 4,
-        scroll: 4
-      });
+      $$.jcarousel( $.extend( {
+            visible: 4,
+            scroll: 4
+          }, $$.metadata().jcarousel_options
+        ))
+        .wrap('<div class="jcarousel-clip-bottom" />')
+      ;
     });
     
     //
