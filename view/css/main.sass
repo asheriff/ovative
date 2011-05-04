@@ -19,6 +19,7 @@ $FONT_HEADINGS: "Arial Narrow", $FONT
 $COLOR_ORANGE: #F25623
 $COLOR_GREY: #999
 $COLOR_RED: #F00
+$COLOR_BLUE: #DFF0F6
 
 //-------------------------------------------------------------------------
 // Mixins
@@ -42,7 +43,7 @@ $COLOR_RED: #F00
 /* General
 /*-------------------------------------------------------------------------
 BODY
-  :background #DFF0F6
+  :background $COLOR_BLUE
   :margin 0
 
 IMG
@@ -383,10 +384,14 @@ INPUT[type=text], INPUT[type=password], SELECT
     :cursor pointer
   .jcarousel-next-horizontal
     :right 5px
-    :background transparent url(#{$IMG}/components/slideshow/skins/default/icon_next.gif) no-repeat 0 0
+    :background transparent url(#{$IMG}/components/slideshow/skins/default/icon_next.png) no-repeat 0 0
+    * HTML &
+      :background transparent url(#{$IMG}/components/slideshow/skins/default/icon_next.gif) no-repeat 0 0
   .jcarousel-prev-horizontal
     :left 5px
-    :background transparent url(#{$IMG}/components/slideshow/skins/default/icon_prev.gif) no-repeat 0 0
+    :background transparent url(#{$IMG}/components/slideshow/skins/default/icon_prev.png) no-repeat 0 0
+    * HTML &
+      :background transparent url(#{$IMG}/components/slideshow/skins/default/icon_prev.gif) no-repeat 0 0
   .jcarousel-next-horizontal, .jcarousel-prev-horizontal
     &:hover
       :background-position -32px 0
@@ -419,15 +424,19 @@ INPUT[type=text], INPUT[type=password], SELECT
       :background no-repeat center center
 
 .jcarousel-skin-white
+  .jcarousel-container
+    :padding-top 13px
+    :background $COLOR_BLUE url(#{$IMG}/components/slideshow/skins/white/bg_top.gif) no-repeat center top
   .jcarousel-clip
-    :background #FFF url(#{$IMG}/components/slideshow/skins/white/bg_top.gif) no-repeat left top
+    :background #FFF
   .jcarousel-clip-bottom
     :background url(#{$IMG}/components/slideshow/skins/white/bg_bottom.gif) no-repeat left bottom
+    :padding-bottom 10px
   .jcarousel-item
     :border-right 1px solid #BECBD1
     :text-align left
   .slide
-    :padding 10px 10px 10px 0
+    :padding 0 10px 10px 0
 
 .jcarousel-skin-photos
   .jcarousel-item

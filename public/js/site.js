@@ -100,7 +100,7 @@
         service_tab
           .width( e.width() )
           .css({
-            top: pos.top - service_tab.height(),
+            top: pos.top - service_tab.height() - 13,
             left: pos.left
           })
           .show()
